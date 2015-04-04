@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>User list</h1>
+    <section class="row">
+        {% for user in users %}
+            <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3 text-center">
+                <figure>
+                    <figcaption><h2>{{ user.name }}</h2></figcaption>
+                </figure>
+
+                <p>{{ user.birthday|date }}</p>
+                <p>{{ user.sex }}</p>
+
+                <aside class="btn-group" role="group">
+                    <a class="btn btn-primary" href="{{ url('user_show', {'id': user.id} ) }}"><span class="glyphicon glyphicon-eye-open"></span> Show</a>
+                    <a class="btn btn-warning" href="{{ url('user_update', {'id': user.id} ) }}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                </aside>
+            </article>
+        {% endfor %}
+    </section>
+    <aside class="text-center" style="margin-top: 5%">
+        <a href="{{ url('user_create') }}" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
+    </aside>
+
+{% endblock %}
