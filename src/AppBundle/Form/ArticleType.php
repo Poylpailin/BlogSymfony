@@ -1,10 +1,9 @@
 <?php
 namespace AppBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
+use  Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
 class ArticleType extends AbstractType
 {
     /**
@@ -16,6 +15,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
+            ->add('date')
             ->add('categories')
             ->add('tags')
         ;

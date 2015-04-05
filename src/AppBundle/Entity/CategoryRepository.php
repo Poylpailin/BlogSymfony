@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
@@ -14,14 +13,13 @@ use Doctrine\ORM\Query\Expr as Expr;
  */
 class CategoryRepository extends EntityRepository
 {
+
     public function findCatchAll($id = null)
     {
         $qb = $this->createQueryBuilder('c');
         $qb
-            ->select('c, a')
-            ->leftJoin('c.articles', 'a', Expr\Join::WITH)
+            ->select('c')
             ->orderBy('c.id', 'DESC');
-        ;
         if (null !== $id) {
             $qb
                 ->where('c.id = :id')

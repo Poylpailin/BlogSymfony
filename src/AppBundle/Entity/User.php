@@ -1,20 +1,15 @@
 <?php
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\AbstractQuery;
-use Doctrine\ORM\EntityRepository;
-
 /**
  * User
  *
- * @ORM\Entity(repositoryClass="AppBundle\Entity\TrainerRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
  * @ORM\Table(name="user")
  */
 class User
 {
-
     /**
      * @var integer
      *
@@ -36,18 +31,11 @@ class User
      */
     private $birthday;
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="sex", type="boolean")
-     */
-    private $sex;
-    const SEX_FEMALE = false;
-    const SEX_MALE   = true;
-    /**
      * Get id
      *
      * @return integer
      */
+
     public function getId()
     {
         return $this->id;
@@ -64,6 +52,7 @@ class User
         $this->name = $name;
         return $this;
     }
+
     /**
      * Get name
      *
@@ -73,6 +62,7 @@ class User
     {
         return $this->name;
     }
+
     /**
      * Set birthday
      *
@@ -85,6 +75,7 @@ class User
         $this->birthday = $birthday;
         return $this;
     }
+
     /**
      * Get birthday
      *
@@ -94,28 +85,7 @@ class User
     {
         return $this->birthday;
     }
-    /**
-     * Set sex.
-     *
-     * @param boolean $sex
-     *
-     * @return User
-     */
-    public function setSex($sex)
-    {
-        $this->sex = $sex;
-        return $this;
-    }
-    /**
-     * Get sex.
-     *
-     * @return boolean
-     */
-    public function getSex()
-    {
-        return $this->sex;
-    }
-
+    
     /**
      * @return string
      */
@@ -123,5 +93,4 @@ class User
     {
         return $this->name;
     }
-
 }

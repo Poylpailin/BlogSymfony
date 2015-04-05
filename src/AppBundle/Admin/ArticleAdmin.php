@@ -10,9 +10,8 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ArticleAdmin extends Admin
 {
-
     /**
-     * // Fields to be shown on create/edit forms
+     * Fields to be shown on create/edit forms
      *
      * {@inheritdoc}
      */
@@ -20,60 +19,57 @@ class ArticleAdmin extends Admin
     {
         $formMapper
             ->add('title')
-            ->add('content')
+            ->add('user')
             ->add('date')
             ->add('categories')
             ->add('tags')
-            ->add('user')
+            ->add('content')
         ;
     }
-
     /**
-     * Fields to be shown on filter forms
+     *Fields to be shown on filter forms
      *
-     * {@inheritdoc}
+     * {@inheritdoc)
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
             ->add('title')
             ->add('user')
-            ->add('date')
         ;
     }
     /**
-     * // Fields to be shown on lists
+     * Fields to be shown on lists
      *
      * {@inheritdoc}
-     *
      */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->addIdentifier('id')
             ->add('title')
-            ->add('content')
             ->add('user')
-            ->add('date')
             ->add('categories')
             ->add('tags')
+            ->add('content')
+            ->add('date')
         ;
     }
-
     /**
-     * Fields to be shown on show action
+     * Fields to be shown in action
      *
      * {@inheritdoc}
      */
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
+            ->add('id')
             ->add('title')
-            ->add('content')
-            ->add('date')
+            ->add('user')
             ->add('categories')
             ->add('tags')
-            ->add('user')
+            ->add('content')
+            ->add('date')
         ;
     }
 }

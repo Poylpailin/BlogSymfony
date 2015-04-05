@@ -1,42 +1,22 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Article list</h1>
+    <h2>Articles</h2>
 
-    <table class="records_list">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Date</th>
-        </tr>
-        </thead>
-        <tbody>
+    <section class="row">
         {% for article in articles %}
-            <tr>
-                <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
-                <td>{{ article.name }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('article_show', { 'id': article.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('article_update', { 'id': article.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('article_create') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+                <div class="text-center">
+                    <h2><a href="{{ url('article_show', {'id': article.id} ) }}">{{ article.title }}</a></h2>
+                    <p>{{ article.date|date("d/m/Y") }}</p>
+                    <p>Categories : {% for category in article.categories %}
+                            <a href="{{ path('category', {'name': category}) }}" class="btn btn-primary btn-xs">{{ category }}</a>
+                        {% endfor %}</p>
+                    <p>Tags : {% for tag in article.tags %}
+                            <a href="{{ path('tag', {'name': tag}) }}" class="btn btn-primary btn-xs">{{ tag }}</a>
+                        {% endfor %}</p>
+
+            </div>
+        {% endfor %}
+    </section>
 {% endblock %}

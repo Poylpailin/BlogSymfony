@@ -3,7 +3,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Article
  *
@@ -20,42 +19,49 @@ class Article
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="string", length=255)
+     * @ORM\Column(name="content", type="text")
      */
     private $content;
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date")
      */
     private $date;
+
     /**
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Category")
      */
     private $categories;
+
     /**
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Tag")
      */
     private $tags;
+
     /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      */
     private $user;
+
     /**
      * Constructor.
      */
@@ -213,6 +219,7 @@ class Article
     {
         return $this->user;
     }
+
     /**
      * @return string
      */

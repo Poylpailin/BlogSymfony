@@ -1,17 +1,13 @@
 <?php
-
 namespace AppBundle\Controller;
-
 use AppBundle\Entity\ArticleRepository;
 use AppBundle\Entity\UserRepository;
 use AppBundle\Entity\TagRepository;
 use AppBundle\Entity\CategoryRepository;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
 /**
  * Class ApiController
  *
@@ -28,16 +24,13 @@ class ApiController extends Controller
     {
         // Retrieve Doctrine Manager
         $em = $this->getDoctrine()->getManager();
-
         // Retrieve Entity Repository
         /** @var ArticleRepository $repo */
         $repo = $em->getRepository('AppBundle:Article');
-
-        // Retrieve all Article entities
+        // Retrieve all Articles entities
         $articles = $repo->findCatchAll();
         return new JsonResponse($articles);
     }
-
     /**
      * @Route("/user/{id}", name="api_user", defaults={"id" = null}, requirements={"id" = "\d+"})
      */
@@ -45,17 +38,12 @@ class ApiController extends Controller
     {
         // Retrieve Doctrine Manager
         $em = $this->getDoctrine()->getManager();
-
         /** @var UserRepository $repo */
         $repo = $em->getRepository('AppBundle:User');
-
-        // Retrieve all Pokemon entities
+        // Retrieve all Users entities
         $users = $repo->findCatchAll();
-
         return new JsonResponse($users);
     }
-
-
     /**
      * @Route("/category/{id}", name="api_category", defaults={"id" = null}, requirements={"id" = "\d+"})
      */
@@ -63,15 +51,12 @@ class ApiController extends Controller
     {
         // Retrieve Doctrine Manager
         $em = $this->getDoctrine()->getManager();
-
         /** @var CategoryRepository $repo */
         $repo = $em->getRepository('AppBundle:Category');
-
-        // Retrieve all Pokemon entities
+        // Retrieve all Categories entities
         $categories = $repo->findCatchAll();
         return new JsonResponse($categories);
     }
-
     /**
      * @Route("/tag/{id}", name="api_tag", defaults={"id" = null}, requirements={"id" = "\d+"})
      */
@@ -79,11 +64,9 @@ class ApiController extends Controller
     {
         // Retrieve Doctrine Manager
         $em = $this->getDoctrine()->getManager();
-
         /** @var TagRepository $repo */
         $repo = $em->getRepository('AppBundle:Tag');
-
-        // Retrieve all Pokemon entities
+        // Retrieve all Tags entities
         $tags = $repo->findCatchAll();
         return new JsonResponse($tags);
     }

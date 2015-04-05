@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
@@ -14,7 +13,6 @@ use Doctrine\ORM\Query\Expr as Expr;
  */
 class ArticleRepository extends EntityRepository
 {
-
     public function findCatchAll($id = null)
     {
         $qb = $this->createQueryBuilder('a');
@@ -22,11 +20,10 @@ class ArticleRepository extends EntityRepository
             ->select('a, u, c, t')
             ->leftJoin('a.user', 'u', Expr\Join::WITH)
             ->leftJoin('a.categories', 'c', Expr\Join::WITH)
+            ->leftJoin('a.tags', 't', Expr\Join::WITH)
             ->orderBy('a.id', 'DESC');
         ;
-
-        // Un article?
-        if (null !== $id){
+        if (null !== $id) {
             $qb
                 ->where('a.id = :id')
                 ->setParameters([
@@ -34,13 +31,8 @@ class ArticleRepository extends EntityRepository
                 ])
             ;
         }
-
         return null === $id
-            // TOUS LES ARTICLES
             ? $qb->getQuery()->getArrayResult()
-
-            // UN ARTICLE
-            : $qb->getQuery()->getSingleResult(AbstractQuery::HYDRATE_ARRAY)
-            ;
+            : $qb->getQuery()->getSingleResult(AbstractQuery::HYDRATE_ARRAY);
     }
 }

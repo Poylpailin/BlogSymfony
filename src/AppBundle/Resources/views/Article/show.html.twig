@@ -1,40 +1,17 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Pokemon</h1>
 
-    <table class="record_properties">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ article.id }}</td>
-        </tr>
-        <tr>
-            <th>Title</th>
-            <td>{{ article.title }}</td>
-        </tr>
-        <tr>
-            <th>Content</th>
-            <td>{{ article.content }}</td>
-        </tr>
-        <tr>
-            <th>Date</th>
-            <td>{{ article.date }}</td>
-        </tr>
-        </tbody>
-    </table>
+        <h2 class="text-center">{{ article.title }}</h2>
+        <p>{{ article.content }}</p>
+        <p class="col-md-12">{{ article.user }} - {{ article.date|date("d/m/Y") }}</p>
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('article') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('article_update', { 'id': article.id }) }}">
-                Edit
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+        <p>{% for category in article.categories %}
+            <a href="{{ path('category', {'name': category}) }}" class="btn btn-primary btn-xs">{{ category }}</a>
+        {% endfor %}</p>
+
+        <p>{% for tag in article.tags %}
+            <a href="{{ path('tag', {'name': tag}) }}" class="btn btn-primary btn-xs">{{ tag }}</a>
+        {% endfor %}</p>
+
 {% endblock %}

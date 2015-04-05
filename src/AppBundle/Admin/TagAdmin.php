@@ -20,6 +20,7 @@ class TagAdmin extends Admin
             ->add('name')
         ;
     }
+
     /**
      * Fields to be shown on filter forms
      *
@@ -32,6 +33,7 @@ class TagAdmin extends Admin
             ->add('name')
         ;
     }
+
     /**
      * Fields to be shown on lists
      *
@@ -44,6 +46,7 @@ class TagAdmin extends Admin
             ->add('name')
         ;
     }
+
     /**
      * Fields to be shown on show action
      *

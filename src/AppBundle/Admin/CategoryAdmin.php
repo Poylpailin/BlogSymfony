@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -20,18 +21,19 @@ class CategoryAdmin extends Admin
             ->add('name')
         ;
     }
+
     /**
-     * Fields to be shown on filter forms
+     *Fields to be shown on filter forms
      *
-     * {@inheritdoc}
+     * {@inheritdoc)
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
             ->add('name')
         ;
     }
+
     /**
      * Fields to be shown on lists
      *
@@ -44,8 +46,9 @@ class CategoryAdmin extends Admin
             ->add('name')
         ;
     }
+
     /**
-     * Fields to be shown on show action
+     * Fields to be shown in action
      *
      * {@inheritdoc}
      */

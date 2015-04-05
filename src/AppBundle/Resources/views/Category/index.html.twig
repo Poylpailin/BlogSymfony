@@ -1,40 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Category list</h1>
+    <h2>Category list</h2>
 
-    <table class="records_list">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
-                <td>{{ category.name }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('category_show', { 'id': category.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('category_update', { 'id': category.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {% for category in categories %}
+        <div class="thumbnail text-center">
+            <h3><a href="{{ url('category_show', {'id': category.id} ) }}">{{ category.name }}</a></h3>
+        </div>
+    {% endfor %}
 
-    <ul>
-        <li>
-            <a href="{{ path('category_create') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+
 {% endblock %}
